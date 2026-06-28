@@ -1,4 +1,3 @@
-# pipeline to build docker image from the nodejs application and push it to docker hub with docker login credentials stored in jenkins credentials manager
 pipeline {
     agent any
     environment {
