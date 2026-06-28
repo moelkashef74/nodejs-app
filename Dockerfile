@@ -17,3 +17,5 @@ COPY app.js /app/
 COPY package*.json /app/
 
 EXPOSE 3000
+
+CMD ["node", "app.js"]
