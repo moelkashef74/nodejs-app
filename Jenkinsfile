@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "sudo docker build -t ${IMAGE_NAME}:${IMAGE_TAG}-${env.BUILD_NUMBER} ."
+                sh " docker build -t ${IMAGE_NAME}:${IMAGE_TAG}-${env.BUILD_NUMBER} ."
             }
         }
 
@@ -24,7 +24,7 @@ pipeline {
                     )
                 ]) {
                     sh '''
-                        echo "$DOCKER_PASSWORD" | sudo docker login \
+                        echo "$DOCKER_PASSWORD" |  docker login \
                             -u "$DOCKER_USERNAME" \
                             --password-stdin
                     '''
@@ -34,14 +34,14 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh "sudo docker push ${IMAGE_NAME}:${IMAGE_TAG}-${env.BUILD_NUMBER}"
+                sh " docker push ${IMAGE_NAME}:${IMAGE_TAG}-${env.BUILD_NUMBER}"
             }
         }
     }
 
     post {
         always {
-            sh 'sudo docker logout'
+            sh ' docker logout'
         }
     }
 }
