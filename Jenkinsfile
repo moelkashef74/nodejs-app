@@ -30,5 +30,4 @@ pipeline {
     }
     
 }
-
-# git config --global user.email "
+}
