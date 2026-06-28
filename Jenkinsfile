@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG}-${env.BUILD_NUMBER} ."
+                sh "sudo docker build -t ${IMAGE_NAME}:${IMAGE_TAG}-${env.BUILD_NUMBER} ."
             }
         }
 
@@ -34,14 +34,14 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}-${env.BUILD_NUMBER}"
+                sh "sudo docker push ${IMAGE_NAME}:${IMAGE_TAG}-${env.BUILD_NUMBER}"
             }
         }
     }
 
     post {
         always {
-            sh 'docker logout'
+            sh 'sudo docker logout'
         }
     }
 }
