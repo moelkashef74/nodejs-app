@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to Node.js app!' });
+  res.json({ message: 'Welcome to Node.js app this image was built using Jenkins !' });
 });
 
 app.get('/api/hello', (req, res) => {
